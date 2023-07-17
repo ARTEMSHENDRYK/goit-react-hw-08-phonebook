@@ -1,23 +1,19 @@
 import { useState } from "react";
-import { useAuth } from "../../hooks/index";
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/index";
 import { useDispatch } from "react-redux";
-import { logIn } from "../../redux/auth/operations";
+import { logIn } from "../redux/auth/operations";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
-
+    const navigate = useNavigate();
     const { isAuthError } = useAuth();
-
-    const handleSignupNavigate = () => {
-        navigate('/signup');
-    }
-    
+  
     const handleLogin = () => {
         dispatch(logIn({ email, password }));
+        navigate('/contacts');
     };
 
     return (
@@ -37,7 +33,6 @@ function LoginPage() {
             /> <br/>
             {isAuthError && <div>Error occurred while logging in</div>} <br />
             <button onClick={handleLogin}>Login</button> <br />
-            <button onClick={handleSignupNavigate}>Go to register page</button>
         </div>
     )
 }

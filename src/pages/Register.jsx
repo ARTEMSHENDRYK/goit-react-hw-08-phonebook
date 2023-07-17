@@ -1,25 +1,21 @@
 import { useState } from "react";
-import { useAuth } from "../../hooks/index";
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/index";
 import { useDispatch } from "react-redux";
-import { register } from "../../redux/auth/operations";
+import { register } from "../redux/auth/operations";
 import PasswordStrengthBar from 'react-password-strength-bar';
+import { useNavigate } from "react-router-dom";
 
 function RegisterPage() {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    const navigate = useNavigate ();
     const { isAuthError } = useAuth();
-
-    const handleLoginNavigate = () => {
-        navigate('/login');
-    };
 
     const handleRegister = () => {
         dispatch(register({ email, password, name }));
+        navigate('/contacts');
     };
 
     return (
@@ -46,7 +42,6 @@ function RegisterPage() {
             <div style={{width: 150}}><PasswordStrengthBar password={password} /></div>
             {isAuthError && <div>Error occurred while register</div>} <br />
             <button onClick={handleRegister}>Register</button> <br />
-            <button onClick={handleLoginNavigate}>Go to login page</button>
         </div>
     )
 }

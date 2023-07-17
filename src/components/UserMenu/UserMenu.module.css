@@ -1,0 +1,32 @@
+.nav {
+  display: flex;
+}
+
+.styledLink {
+  display: block;
+  width: 100px;
+  height: 25px;
+  margin: 15px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  background-color: violet;
+  border-radius: 4px;
+}
+
+.styledSpan {
+  display: block;
+    width: auto;
+    height: 25px;
+    margin: 15px;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    color: blueviolet;
+}
+
+.Loader {
+  margin: 0 auto;
+}
