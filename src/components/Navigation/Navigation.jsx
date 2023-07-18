@@ -20,7 +20,7 @@ const SharedLayout = () => {
     <>
       <header>
         <nav className={css.nav}>
-          <StyledLink className={css.styledLink} to="/">Home</StyledLink>
+          {!isLoggedIn && <StyledLink className={css.styledLink} to="/">Home</StyledLink>}
           {!isLoggedIn && <StyledLink className={css.styledLink} to="/signup">Register</StyledLink>}
           {!isLoggedIn && <StyledLink className={css.styledLink} to="/login">Login</StyledLink>}
           {isLoggedIn && <StyledLink className={css.styledLink} to="/contacts">Contacts</StyledLink>}

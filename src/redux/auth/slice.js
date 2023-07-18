@@ -5,7 +5,8 @@ const initialState = {
   user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
-  isAuthError: false,
+  isRegError: false,
+  isLogError: false,
   isRefreshing: false,
   isLoading: false,
 };
@@ -18,35 +19,36 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
-        state.isAuthError = false;
+        state.isRegError = false;
         state.isLoading = false;
       },
       [register.pending](state, _action) {
         state.isLoading = true;
       },
       [register.rejected](state, _action) {
-        state.isAuthError = true;
+        state.isRegError = true;
         state.isLoading = false;
       },
       [logIn.fulfilled](state, action) {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
-        state.isAuthError = false;
+        state.isLogError = false;
         state.isLoading = false;
       },
       [logIn.pending](state, _action) {
         state.isLoading = true;
       },
       [logIn.rejected](state, _action) {
-        state.isAuthError = true;
+        state.isLogError = true;
         state.isLoading = false;
       },
       [logOut.fulfilled](state, _action) {
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
-        state.isAuthError = false;
+        state.isRegError = false;
+        state.isLogError = false;
         state.isRefreshing = false;
       },
       [refreshUser.pending](state) {

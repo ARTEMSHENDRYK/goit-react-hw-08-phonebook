@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from './redux/auth/operations';
@@ -16,17 +16,17 @@ import SharedLayout from 'components/Navigation/Navigation';
 function App() {
   const { isLoggedIn, isRefreshing, isLoading } = useAuth();
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
   
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     navigate('/contacts');
-  //   }
-  // }, [isLoggedIn, navigate]);
+  useEffect(() => {
+    if (isLoggedIn) {
+        navigate('/contacts');
+    }  
+  }, [isLoggedIn, navigate]);
 
   if (isRefreshing || isLoading) {
     return <LoadingBar />

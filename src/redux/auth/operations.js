@@ -71,6 +71,3 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
-
-// "email": "artemshendryk111@gmail.com",
-// "password": "qwerty123"

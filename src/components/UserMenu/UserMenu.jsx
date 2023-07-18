@@ -24,7 +24,7 @@ function UserMenu() {
   return (
     <div className={css.nav}>
       <span className={css.styledSpan}>{user.email}</span>
-      <StyledLink onClick={handleLogout} className={css.styledLink}>Log out</StyledLink>
+      <StyledLink onClick={handleLogout} className={css.styledLink}>Logout</StyledLink>
     </div>
   )
 }
